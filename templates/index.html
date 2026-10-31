@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>IPL 2026</title>
+</head>
+<body bgcolor="red" align="center">
+<h1><p style="color:black;" ><b>Live Score Management System</b></p></h1>
+<hr>
+<h2><marquee direction="right"><p style="color:yellow;">Indian Premier League 2026 🏏 </p> </marquee> </h2>
+<hr>
+<hr>
+<h3>Add Team</h3>
+<form action="/add_team" method="post">
+<input type="text" name="team" required>
+<button>Add</button>
+</form>
+
+<h3>Add Player</h3>
+<form action="/add_player" method="post">
+<input name="name" placeholder="Player Name">
+<input name="role" placeholder="Role">
+<input name="team" placeholder="Team ID">
+<button>Add Player</button>
+</form>
+
+<h3>Schedule Match</h3>
+<form action="/add_match" method="post">
+<input name="team1">
+<input name="team2">
+<button>Schedule</button>
+</form>
+
+<a href="/live">Live Score</a>
+
+</body>
+</html>
+

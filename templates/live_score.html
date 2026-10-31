@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Scores</title>
+</head>
+<body>
+
+<h1>Live Match Scores</h1>
+
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Team 1</th>
+    <th>Team 2</th>
+    <th>Score 1</th>
+    <th>Score 2</th>
+    <th>Status</th>
+</tr>
+
+{% for m in matches %}
+<tr>
+    <td>{{ m[0] }}</td>
+    <td>{{ m[1] }}</td>
+    <td>{{ m[2] }}</td>
+    <td>{{ m[3] }}</td>
+    <td>{{ m[4] }}</td>
+    <td>{{ m[5] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<hr>
+
+<h2>Update Match Score</h2>
+<form action="/update_score" method="post">
+    <input type="number" name="match_id" placeholder="Match ID" required>
+    <input type="number" name="score1" placeholder="Team 1 Score" required>
+    <input type="number" name="score2" placeholder="Team 2 Score" required>
+    <input type="text" name="status" placeholder="Live / Finished" required>
+    <button type="submit">Update Score</button>
+</form>
+
+<br>
+<a href="/">Back to Home</a>
+
+</body>
+</html>
