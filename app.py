@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, redirect
-#from database import get_db_connection
-#load_dotenv()
 import mysql.connector
 import os
 from dotenv import load_dotenv
-
 from database import get_db_connection
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -54,20 +53,28 @@ def add_match():
 
 
 @app.route('/update_score', methods=['POST'])
+@app.route('/update_score', methods=['POST'])
 def update_score():
     match_id = request.form['match_id']
     score1 = request.form['score1']
     score2 = request.form['score2']
-    conn = get_db_connection()
-    #cursor = conn.cursor()
-    cursor.execute("""update matches
-        set score1 =%s,score2 = %s,status = 'Live' 
-        where match_id=%s
-        """,(score1,score2,match_id))
-    db.commit()
-   # conn.close()
-    return redirect('/live')
+    status = request.form['status']
 
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        UPDATE matches
+        SET score1=%s, score2=%s, status=%s
+        WHERE match_id=%s
+    """, (score1, score2, status, match_id))
+
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    return redirect('/live')
 
 
 
